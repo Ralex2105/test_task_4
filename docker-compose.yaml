@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  pytest:
+    build: .
+    command: pytest app/test/test_1.py
+    volumes:
+      - .:/app

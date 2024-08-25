@@ -1,7 +1,7 @@
 import pytest
 
-from app.src.client import Client
-import config
+from app.client import Client
+from app.test import config
 import os
 
 url = config.url
