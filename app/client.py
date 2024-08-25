@@ -1,9 +1,9 @@
 import json
 
 
-from app.src.api import API
-from app.src.cache import Cache
-from app.src.AppException import IncorrectInputData, IncorrectReceivedData, CodeStatusError
+from app.api import API
+from app.cache import Cache
+from app.AppException import IncorrectInputData, IncorrectReceivedData, CodeStatusError
 
 
 class Client:
