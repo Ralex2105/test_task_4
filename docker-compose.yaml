@@ -3,6 +3,18 @@ version: "3.8"
 services:
   pytest:
     build: .
-    command: pytest app/test/test_1.py
+    command: pytest app/test/test_app.py
+    volumes:
+      - .:/app
+
+  nmap:
+    build: .
+    command: pytest app/test/test_nmap.py
+    volumes:
+      - .:/app
+
+  cert:
+    build: .
+    command: pytest app/test/test_cert.py
     volumes:
       - .:/app
