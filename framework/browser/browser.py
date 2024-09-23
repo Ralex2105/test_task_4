@@ -102,10 +102,13 @@ class Browser:
     def find_alert(self):
         """
         Check alert in Browser
+
+        :return: Boolean value (if alert is not present) or Tuple of [Boolean, alert] (if alert is found)
         """
         try:
-            WebDriverWait(self.driver, self.timeout).until(EC.alert_is_present())
+            alert = WebDriverWait(self.driver, self.timeout).until(EC.alert_is_present())
         except TimeoutException:
             return True
         else:
-            return False
+            return False, alert
+

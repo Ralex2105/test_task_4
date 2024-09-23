@@ -1,7 +1,5 @@
-from selenium.common.exceptions import TimeoutException
 from testfire_tests.config.urls import URLs
 from framework.config.test_data import TestData
-from framework.browser.browser import Browser
 import logging
 
 from testfire_tests.pages.landing_page import LandingPage
@@ -25,7 +23,14 @@ def test_search_xss(browser):
     landing_page.enter_search_query(browser, TestData.XSS_PAYLOAD)
     landing_page.submit_search(browser)
 
-    logging.info("Check XSS alert is not found")
-    assert not Browser.find_alert(browser)
+    alert = browser.find_alert()
+
+    if alert[0]:
+        logging.info("No XSS vulnerability detected.")
+        assert alert[0], "XSS vulnerability check passed. No XSS payload found."
+    else:
+        logging.error("Potential XSS vulnerability detected: XSS payload found in page source.")
+        alert[1].accept()
+        assert alert[0], "Potential XSS vulnerability detected: XSS payload found in page source."
 
     logging.info("Finish xss search test")

@@ -1,14 +1,12 @@
 import logging
-import os
 from selenium.webdriver.common.by import By
-from dotenv import load_dotenv
 
 from testfire_tests.pages.login_page import LoginPage
 from testfire_tests.config.urls import URLs
 from testfire_tests.config.xpaths import XPaths
+from testfire_tests.config.credentials import Credentials
 
 logging.basicConfig(level=logging.INFO)
-load_dotenv()
 
 
 def test_login(browser):
@@ -25,8 +23,8 @@ def test_login(browser):
     browser.navigate_to(URLs.LOGIN_URL_BEFORE_AUTH)
 
     logging.info("Entering username and password")
-    login_page.enter_username(browser, os.getenv("USERNAME"))
-    login_page.enter_password(browser, os.getenv("PASSWORD"))
+    login_page.enter_username(browser, Credentials.LOGIN_USERNAME)
+    login_page.enter_password(browser, Credentials.LOGIN_PASSWORD)
 
     logging.info("Click button to submit login and password")
     login_page.click_login_button(browser)
