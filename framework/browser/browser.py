@@ -1,12 +1,15 @@
-from selenium.common import TimeoutException
+import logging
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 from framework.browser.browser_factory import BrowserFactory
+from framework.browser.singleton import SingletonMeta
 
 
-class Browser:
+class Browser(metaclass=SingletonMeta):
+
+    _browser = None
 
     def __init__(self, browser_type: str = 'chrome', timeout: int = 10):
         """
@@ -15,9 +18,42 @@ class Browser:
         :param browser_type: Browser type ('chrome', 'firefox')
         :param timeout: Timeout for waits in seconds
         """
-        self.browser_factory = BrowserFactory(browser_type)
-        self.driver = self.browser_factory.driver
+        logging.debug(f"Initialize browser with type: {browser_type} and timeout: {timeout} seconds.")
+        self._browser = BrowserFactory.initialize_browser(browser_type)
         self.timeout = timeout
+
+    @property
+    def browser(self):
+        """
+        Returns the WebDriver instance.
+        """
+        logging.debug("Return the Browser instance.")
+        return self._browser
+
+    def close_browser(self):
+        """
+        Closes the browser and quits the WebDriver session.
+        """
+        logging.debug("Closing the browser.")
+        if self._browser:
+            self._browser.quit()
+            logging.info("Browser closed.")
+            BrowserFactory._instance = None
+        else:
+            logging.warning("No browser instance found to close.")
+
+    def change_browser_type(self, new_browser_type: str):
+        """
+        Changes the browser type by initializing a new WebDriver instance.
+
+        :param new_browser_type: New browser type ('chrome', 'firefox')
+        """
+        logging.debug(f"Change browser type from {self._browser.capabilities['browserName']} to {new_browser_type}.")
+        if self._browser:
+            self._browser.quit()
+            BrowserFactory._instance = None
+        self._browser = BrowserFactory.initialize_browser(new_browser_type)
+        logging.debug(f"Browser type changed to {new_browser_type}.")
 
     def navigate_to(self, url: str):
         """
@@ -25,7 +61,8 @@ class Browser:
 
         :param url: URL to navigate to
         """
-        self.driver.get(url)
+        logging.debug(f"Navigate to URL: {url}")
+        self._browser.get(url)
 
     def get_page_source(self) -> str:
         """
@@ -33,13 +70,8 @@ class Browser:
 
         :return: Page source as a string
         """
-        return self.driver.page_source
-
-    def close_browser(self):
-        """
-        Closes the browser using the Singleton instance.
-        """
-        self.browser_factory.close_browser()
+        logging.debug("Get page source.")
+        return self._browser.page_source
 
     def take_screenshot(self, file_path: str):
         """
@@ -47,7 +79,8 @@ class Browser:
 
         :param file_path: Path to save the screenshot
         """
-        self.driver.save_screenshot(file_path)
+        logging.debug(f"Take screenshot and save to {file_path}.")
+        self._browser.save_screenshot(file_path)
 
     def get_title(self) -> str:
         """
@@ -55,7 +88,8 @@ class Browser:
 
         :return: Page title
         """
-        return self.driver.title
+        logging.debug("Get page title.")
+        return self._browser.title
 
     def get_current_url(self) -> str:
         """
@@ -63,7 +97,8 @@ class Browser:
 
         :return: Current URL
         """
-        return self.driver.current_url
+        logging.debug("Get current URL.")
+        return self._browser.current_url
 
     def wait_for_display_element(self, by: By, value: str):
         """
@@ -73,7 +108,8 @@ class Browser:
         :param value: Locator value
         :return: WebElement
         """
-        return WebDriverWait(self.driver, self.timeout).until(
+        logging.debug(f"Wait for element for display. Locator: ({by}, {value}).")
+        return WebDriverWait(self._browser, self.timeout).until(
             EC.visibility_of_element_located((by, value))
         )
 
@@ -85,30 +121,18 @@ class Browser:
         :param value: Locator value
         :return: WebElement
         """
-
-        return WebDriverWait(self.driver, self.timeout).until(
+        logging.debug(f"Find element. Locator: ({by}, {value}).")
+        return WebDriverWait(self._browser, self.timeout).until(
             EC.presence_of_element_located((by, value))
         )
 
-    def change_browser_type(self, new_browser_type: str):
+    def wait_for_alert(self):
         """
-        Changes the browser type using the Singleton instance.
+        Waits for an alert to be present.
 
-        :param new_browser_type: New browser type ('chrome', 'firefox')
+        :return: Alert instance
         """
-        self.browser_factory.change_browser_type(new_browser_type)
-        self.driver = self.browser_factory.driver
-
-    def find_alert(self):
-        """
-        Check alert in Browser
-
-        :return: Boolean value (if alert is not present) or Tuple of [Boolean, alert] (if alert is found)
-        """
-        try:
-            alert = WebDriverWait(self.driver, self.timeout).until(EC.alert_is_present())
-        except TimeoutException:
-            return True
-        else:
-            return False, alert
-
+        logging.debug("Wait for alert.")
+        return WebDriverWait(self._browser, self.timeout).until(
+            EC.alert_is_present()
+        )

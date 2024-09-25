@@ -1,7 +1,9 @@
-from testfire_tests.config.urls import URLs
-from framework.config.test_data import TestData
 import logging
+from selenium.common.exceptions import TimeoutException, UnexpectedAlertPresentException, NoAlertPresentException
 
+from framework.config.test_data import TestData
+
+from testfire_tests.config.urls import URLs
 from testfire_tests.pages.landing_page import LandingPage
 
 logging.basicConfig(level=logging.INFO)
@@ -13,24 +15,30 @@ def test_search_xss(browser):
 
     :param browser: Browser instance
     """
-    logging.info("Starting the XSS test")
+
+    xss_payload = TestData.XSS_PAYLOAD
+
+    logging.info("Start the XSS test.")
     landing_page = LandingPage()
 
-    logging.info("Navigating to landing page")
+    logging.info("Navigate to landing page.")
     browser.navigate_to(URLs.BASE_URL)
 
-    logging.info("Entering xss in search field and submit")
-    landing_page.enter_search_query(browser, TestData.XSS_PAYLOAD)
+    logging.info("Enter xss in search field and submit.")
+    landing_page.enter_search_query(browser, xss_payload)
     landing_page.submit_search(browser)
 
-    alert = browser.find_alert()
-
-    if alert[0]:
-        logging.info("No XSS vulnerability detected.")
-        assert alert[0], "XSS vulnerability check passed. No XSS payload found."
-    else:
-        logging.error("Potential XSS vulnerability detected: XSS payload found in page source.")
-        alert[1].accept()
-        assert alert[0], "Potential XSS vulnerability detected: XSS payload found in page source."
+    try:
+        logging.info("Get page source to check for XSS payload.")
+        page_source = browser.get_page_source()
+        if xss_payload in page_source:
+            logging.info("Potential XSS vulnerability detected: XSS payload found in page source.")
+            assert False, "Potential XSS vulnerability detected: XSS payload found in page source."
+        else:
+            logging.info("No XSS vulnerability detected.")
+            assert True, "XSS vulnerability check passed. No XSS payload found."
+    except UnexpectedAlertPresentException:
+        logging.error("XSS vulnerability detected: Alert appeared")
+        assert False, f"XSS vulnerability detected: Alert appeared"
 
     logging.info("Finish xss search test")

@@ -1,22 +1,16 @@
+import logging
+
 from framework.elements.base_element import BaseElement
 from framework.browser.browser import Browser
 
 
 class LabelElement(BaseElement):
 
-    def enter_text(self, browser, word):
+    def get_text(self, browser):
         """
-        Enter text to label element
-
-        :param browser: instance Browser
-        :param word: word to enter
-        """
-        Browser.find_element(browser, self.locator[0], self.locator[1]).send_keys(word)
-
-    def clean(self, browser):
-        """
-        Clear the filed from values
+        Get text from label element
 
         :param browser: instance Browser
         """
-        Browser.find_element(browser, self.locator[0], self.locator[1]).clear()
+        logging.debug(f"Get text from label element: {self.name} with locator: {self.locator}.")
+        Browser.find_element(browser, self.locator[0], self.locator[1]).text()

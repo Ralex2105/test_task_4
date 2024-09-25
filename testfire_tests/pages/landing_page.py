@@ -1,24 +1,48 @@
+import logging
 from selenium.webdriver.common.by import By
 
 from framework.elements.textbox_element import TextBoxElement
 from framework.elements.button_element import ButtonElement
 from framework.pages.base_page import BasePage
+from framework.cache.cache_element import CacheElement
 
 
-class LandingPage(BasePage):
+class LandingPage(BasePage, CacheElement):
     """
     Landing page class with basic elements
     """
 
-    __SEARCH_PAGE_SEARCH_BOX = (By.NAME, "query")
-    __SEARCH_PAGE_SEARCH_BOX_BUTTON = (By.XPATH, "//input[@type='submit' and @value='Go']")
+    __SEARCH_PAGE_SEARCH_TEXTBOX_NAME = "search_textbox_element"
+    __SEARCH_PAGE_SEARCH_TEXTBOX = (By.NAME, "query")
 
-    def __init__(self):
+    __SEARCH_PAGE_SEARCH_BUTTON_NAME = "search_button_element"
+    __SEARCH_PAGE_SEARCH_BUTTON = (By.XPATH, "//input[@type='submit' and @value='Go']", "search_button_element")
+
+    @property
+    def search_textbox_element(self):
         """
-        Initializing the landing page with basic elements
+        Initialize and cache __SEARCH_PAGE_SEARCH_TEXTBOX.
+
+        :return: An instance of TextBoxElement __SEARCH_PAGE_SEARCH_TEXTBOX.
         """
-        self.search_box_element = TextBoxElement(self.__SEARCH_PAGE_SEARCH_BOX)
-        self.search_box_button = ButtonElement(self.__SEARCH_PAGE_SEARCH_BOX_BUTTON)
+        logging.debug("Get search textbox element.")
+        return self.get_cached_element(
+            self.__SEARCH_PAGE_SEARCH_TEXTBOX_NAME,
+            lambda: TextBoxElement(self.__SEARCH_PAGE_SEARCH_TEXTBOX, self.__SEARCH_PAGE_SEARCH_TEXTBOX_NAME)
+        )
+
+    @property
+    def search_button_element(self):
+        """
+        Initialize and cache __SEARCH_PAGE_SEARCH_BUTTON.
+
+        :return: An instance of TextBoxElement __SEARCH_PAGE_SEARCH_BUTTON.
+        """
+        logging.debug("Get search button element.")
+        return self.get_cached_element(
+            self.__SEARCH_PAGE_SEARCH_BUTTON_NAME,
+            lambda: ButtonElement(self.__SEARCH_PAGE_SEARCH_BUTTON, self.__SEARCH_PAGE_SEARCH_BUTTON_NAME)
+        )
 
     def enter_search_query(self, browser, query):
         """
@@ -27,7 +51,8 @@ class LandingPage(BasePage):
         :param browser: instance Browser
         :param query: string to enter to field
         """
-        self.search_box_element.enter_text(browser, query)
+        logging.debug(f"Enter search query: {query}")
+        self.search_textbox_element.enter_text(browser, query)
 
     def submit_search(self, browser):
         """
@@ -35,4 +60,5 @@ class LandingPage(BasePage):
 
         :param browser: instance Browser
         """
-        self.search_box_button.click(browser)
+        logging.debug("Submit search query.")
+        self.search_button_element.click(browser)

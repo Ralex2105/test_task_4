@@ -6,7 +6,6 @@ from framework.config.driver_list import DriverList
 
 from testfire_tests.config.urls import URLs
 
-
 logging.basicConfig(level=logging.INFO)
 
 
@@ -17,12 +16,13 @@ def browser():
 
     :return: WebDriver instance
     """
-    logging.info("Setting up the WebDriver instance")
+    logging.info("Initialize browser.")
     browser = Browser(DriverList.firefox_driver)
-    logging.info("Browser instance initialized")
-    logging.info("Navigate to" + URLs.BASE_URL)
+
+    logging.info(f"Navigate to base URL: {URLs.BASE_URL}.")
     browser.navigate_to(URLs.BASE_URL)
-    logging.info("Current URL:" + URLs.BASE_URL)
+
     yield browser
-    logging.info("Tearing down the WebDriver instance")
+
+    logging.info("Close the browser.")
     browser.close_browser()
