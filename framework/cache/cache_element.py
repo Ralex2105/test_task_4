@@ -1,12 +1,15 @@
 import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 class CacheElement:
     def __init__(self):
         """
         Initializes a new instance of the CacheElement class.
         """
-        logging.debug("Initialized CacheElement.")
+        logger.debug("Initialized CacheElement.")
         self._element_cache = {}
 
     def get_cached_element(self, name, find_element_func):
@@ -17,11 +20,11 @@ class CacheElement:
         :returns WebElement: The cached element with the specified name.
         """
         if name not in self._element_cache:
-            logging.debug(f"Element '{name}' not found in cache.")
+            logger.debug(f"Element '{name}' not found in cache.")
             self._element_cache[name] = find_element_func()
-            logging.debug(f"Element '{name}' find and put cache.")
+            logger.debug(f"Element '{name}' find and put cache.")
         else:
-            logging.debug(f"Element '{name}' in cache.")
+            logger.debug(f"Element '{name}' in cache.")
         return self._element_cache[name]
 
     def reset_element_cache(self, name=None):
@@ -34,9 +37,9 @@ class CacheElement:
         if name:
             if name in self._element_cache:
                 del self._element_cache[name]
-                logging.debug(f"Element '{name}' removed from cache.")
+                logger.debug(f"Element '{name}' removed from cache.")
             else:
-                logging.warning(f"'{name}' was not found to remove from cache.")
+                logger.warning(f"'{name}' was not found to remove from cache.")
         else:
             self._element_cache.clear()
-            logging.debug("Cache is reset")
+            logger.debug("Cache is reset")

@@ -7,6 +7,9 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.edge.options import Options as EdgeOptions
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 class BrowserFactory(object):
 
@@ -16,30 +19,28 @@ class BrowserFactory(object):
 
         :param browser_type: Browser type ('chrome', 'firefox')
         """
-        logging.debug(f"Initialize browser of type: {browser_type} in BrowserFactory.")
+        logger.debug(f"Initialize browser of type: {browser_type} in BrowserFactory.")
 
         if browser_type == 'chrome':
             chrome_options = ChromeOptions()
             chrome_options.add_argument('--start-maximized')
             service = Service(executable_path='/path/to/chromedriver')
-            logging.debug("Initialize Chrome.")
+            logger.debug("Initialize Chrome.")
             return webdriver.Chrome(service=service, options=chrome_options)
 
         elif browser_type == 'firefox':
             firefox_options = FirefoxOptions()
             service = FirefoxService(executable_path='/usr/local/bin/geckodriver')
-            logging.debug("Initialize FireFox.")
+            logger.debug("Initialize FireFox.")
             return webdriver.Firefox(service=service, options=firefox_options)
 
         elif browser_type == 'edge':
             edge_options = EdgeOptions()
             edge_options.add_argument('--start-maximized')
             service = EdgeService(executable_path='/path/to/msedgedriver')
-            logging.debug("Initialize Edge.")
+            logger.debug("Initialize Edge.")
             return webdriver.Edge(service=service, options=edge_options)
 
         else:
-            logging.error(f"Unsupported browser type: {browser_type}")
+            logger.error(f"Unsupported browser type: {browser_type}")
             raise ValueError(f"Browser type {browser_type} is not supported.")
-
-

@@ -6,7 +6,9 @@ from framework.config.test_data import TestData
 from testfire_tests.config.urls import URLs
 from testfire_tests.pages.landing_page import LandingPage
 
+
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def test_search_xss(browser):
@@ -18,27 +20,27 @@ def test_search_xss(browser):
 
     xss_payload = TestData.XSS_PAYLOAD
 
-    logging.info("Start the XSS test.")
-    landing_page = LandingPage()
+    logger.info("Start the XSS test.")
+    landing_page = LandingPage('landing page', LandingPage.SEARCH_PAGE_UNIQUE_ELEMENT_LOCATOR)
 
-    logging.info("Navigate to landing page.")
+    logger.info("Navigate to landing page.")
     browser.navigate_to(URLs.BASE_URL)
 
-    logging.info("Enter xss in search field and submit.")
+    logger.info("Enter xss in search field and submit.")
     landing_page.enter_search_query(browser, xss_payload)
     landing_page.submit_search(browser)
 
     try:
-        logging.info("Get page source to check for XSS payload.")
+        logger.info("Get page source to check for XSS payload.")
         page_source = browser.get_page_source()
         if xss_payload in page_source:
-            logging.info("Potential XSS vulnerability detected: XSS payload found in page source.")
+            logger.info("Potential XSS vulnerability detected: XSS payload found in page source.")
             assert False, "Potential XSS vulnerability detected: XSS payload found in page source."
         else:
-            logging.info("No XSS vulnerability detected.")
+            logger.info("No XSS vulnerability detected.")
             assert True, "XSS vulnerability check passed. No XSS payload found."
     except UnexpectedAlertPresentException:
-        logging.error("XSS vulnerability detected: Alert appeared")
+        logger.error("XSS vulnerability detected: Alert appeared")
         assert False, f"XSS vulnerability detected: Alert appeared"
 
-    logging.info("Finish xss search test")
+    logger.info("Finish xss search test")
