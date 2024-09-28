@@ -11,5 +11,11 @@ class MainPage(BasePage):
     Main page class with basic elements
     """
 
-    MAIN_PAGE_UNIQUE_ELEMENT_NAME = "main page unique element"
-    MAIN_PAGE_UNIQUE_ELEMENT_LOCATOR = (By.XPATH, "//a[font[text()='Sign Off']]")
+    __PAGE_NAME = "main page"
+    __UNIQUE_ELEMENT_LOCATOR = (By.XPATH, "//a[font[text()='Sign Off']]")
+
+    def __init__(self):
+        """
+        Initializes the MainPage with a name and a unique element locator.
+        """
+        super().__init__(self.__PAGE_NAME, self.__UNIQUE_ELEMENT_LOCATOR)

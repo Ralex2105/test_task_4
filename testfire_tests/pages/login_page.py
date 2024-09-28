@@ -14,8 +14,8 @@ class LoginPage(BasePage):
     Login page class with basic elements
     """
 
-    LOGIN_PAGE_UNIQUE_ELEMENT_NAME = "login button"
-    LOGIN_PAGE_UNIQUE_ELEMENT_LOCATOR = (By.ID, "btnSubmit")
+    __PAGE_NAME = "login page"
+    __UNIQUE_ELEMENT_LOCATOR = (By.ID, "btnSubmit")
 
     __LOGIN_PAGE_USERNAME_TEXTBOX_NAME = "username_textbox_element"
     __LOGIN_PAGE_USERNAME_TEXTBOX_LOCATOR = (By.ID, "uid")
@@ -25,6 +25,12 @@ class LoginPage(BasePage):
 
     __LOGIN_PAGE_LOGIN_BUTTON_NAME = "login_button_element"
     __LOGIN_PAGE_LOGIN_BUTTON_LOCATOR = (By.NAME, "btnSubmit")
+
+    def __init__(self):
+        """
+        Initializes the LandingPage with a name and a unique element locator.
+        """
+        super().__init__(self.__PAGE_NAME, self.__UNIQUE_ELEMENT_LOCATOR)
 
     @property
     def username_textbox_element(self):

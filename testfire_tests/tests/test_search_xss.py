@@ -21,7 +21,7 @@ def test_search_xss(browser):
     xss_payload = TestData.XSS_PAYLOAD
 
     logger.info("Start the XSS test.")
-    landing_page = LandingPage('landing page', LandingPage.SEARCH_PAGE_UNIQUE_ELEMENT_LOCATOR)
+    landing_page = LandingPage()
 
     logger.info("Navigate to landing page.")
     browser.navigate_to(URLs.BASE_URL)

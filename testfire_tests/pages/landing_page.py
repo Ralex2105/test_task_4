@@ -15,14 +15,20 @@ class LandingPage(BasePage):
     Landing page class with basic elements
     """
 
-    SEARCH_PAGE_UNIQUE_ELEMENT_NAME = "search query textbox"
-    SEARCH_PAGE_UNIQUE_ELEMENT_LOCATOR = (By.NAME, "query")
+    __PAGE_NAME = "search page"
+    __UNIQUE_ELEMENT_LOCATOR = (By.NAME, "query")
 
     __SEARCH_PAGE_SEARCH_TEXTBOX_NAME = "search_textbox_element"
     __SEARCH_PAGE_SEARCH_TEXTBOX_LOCATOR = (By.NAME, "query")
 
     __SEARCH_PAGE_SEARCH_BUTTON_NAME = "search_button_element"
     __SEARCH_PAGE_SEARCH_BUTTON_LOCATOR = (By.XPATH, "//input[@type='submit' and @value='Go']", "search_button_element")
+
+    def __init__(self):
+        """
+        Initializes the LandingPage with a name and a unique element locator.
+        """
+        super().__init__(self.__PAGE_NAME, self.__UNIQUE_ELEMENT_LOCATOR)
 
     @property
     def search_textbox_element(self):

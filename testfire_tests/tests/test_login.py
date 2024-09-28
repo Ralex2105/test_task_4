@@ -19,8 +19,8 @@ def test_login(browser):
     """
     logger.info("Start the login test.")
 
-    login_page = LoginPage('login page', LoginPage.LOGIN_PAGE_UNIQUE_ELEMENT_LOCATOR)
-    main_page = MainPage('main page', MainPage.MAIN_PAGE_UNIQUE_ELEMENT_LOCATOR)
+    login_page = LoginPage()
+    main_page = MainPage()
 
     logger.info(f"Navigate to the login URL. URL: {URLs.LOGIN_URL_BEFORE_AUTH}.")
     browser.navigate_to(URLs.LOGIN_URL_BEFORE_AUTH)
