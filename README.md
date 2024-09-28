@@ -61,7 +61,7 @@ It includes tests for login functionality and XSS vulnerabilities.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Ralex2105/test_task_4.git -b develop_2
+   git clone https://github.com/Ralex2105/test_task_4.git -b develop/task_2
    cd test_task_4
 
 2. **Create a virtual environment:**
