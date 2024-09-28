@@ -91,10 +91,12 @@ It includes tests for login functionality and XSS vulnerabilities.
 5. **Download GeckoDriver:**
    - Download the appropriate version for your operating system from [here](https://github.com/mozilla/geckodriver/releases).
    - Extract the downloaded file and add `geckodriver` to your system’s PATH.
+   
    **Download EdgeDriver:**
    - Download the appropriate version for your operating system from [here](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/).
    - Extract the downloaded file and add `msedgedriver` to your system’s PATH.
-   - **Download ChromeDriver:**
+   
+   **Download ChromeDriver:**
    - Download the appropriate version for your operating system from [here](https://sites.google.com/chromium.org/driver/)
    - Extract the downloaded file and add `chromedriver` to your system’s PATH.
 
