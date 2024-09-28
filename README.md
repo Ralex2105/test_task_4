@@ -54,7 +54,7 @@ rate = client.get_rate('USD', 'USD', 4)
 ```
 
 ## Project cloning
-```git clone https://github.com/Ralex2105/test_task_4.git```
+```git clone https://github.com/Ralex2105/test_task_4.git -b develop```
 
 
 ## Testing
@@ -69,7 +69,7 @@ docker-compose run pytest
 As an additional task, tests were written using the nmap and nuclei utilities
 
 ## Project cloning
-```git clone https://github.com/Ralex2105/test_task_4.git```
+```git clone https://github.com/Ralex2105/test_task_4.git -b develop```
 
 ## Testing
 1. Tests if the SSL certificate is valid.
