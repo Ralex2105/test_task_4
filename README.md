@@ -115,7 +115,7 @@ Edit environments and include:
 ## Best Practices
 
 - **Page Object Model:** Used to separate page-specific code from test logic.
-- **Factory Pattern:** Used to create browser.
+- **Factory Pattern:** Used to create browser (Chrome, Firefox, etc.).
 - **Singleton Pattern:** Ensures a single WebDriver instance across tests to avoid redundant browser instances.
 - **Configuration Management:** Centralized in `config.py` to simplify updates and maintenance of locators, URLs, test data.
 - **Logging:** Incorporated to track test execution, errors, and useful debug information.
