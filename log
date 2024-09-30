@@ -1,0 +1,176 @@
+login:
+20:38:19 - conftest - INFO - Initialize browser.
+20:38:19 - framework.browser.browser - DEBUG - Initialize browser with type: firefox and timeout: 10 seconds.
+20:38:19 - framework.browser.browser_factory - DEBUG - Initialize browser of type: firefox in BrowserFactory.
+20:38:19 - framework.browser.browser_factory - DEBUG - Initialize FireFox.
+20:38:19 - selenium.webdriver.common.driver_finder - DEBUG - Skipping Selenium Manager; path to firefox driver specified in Service class: /usr/local/bin/geckodriver
+20:38:19 - selenium.webdriver.common.service - DEBUG - Started executable: `/usr/local/bin/geckodriver` in a child process with pid: 60533 using 0 to output -3
+20:38:19 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'firefox', 'acceptInsecureCerts': True, 'moz:debuggerAddress': True, 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'moz:firefoxOptions': {'prefs': {'remote.active-protocols': 3}}}}}
+20:38:19 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:57641
+20:38:20 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session HTTP/1.1" 200 761
+20:38:20 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"sessionId":"5d8ebd40-4ccf-4ba4-890d-93e97e272dca","capabilities":{"acceptInsecureCerts":true,"browserName":"firefox","browserVersion":"115.7.0","moz:accessibilityChecks":false,"moz:buildID":"20240115170312","moz:debuggerAddress":"127.0.0.1:42955","moz:geckodriverVersion":"0.35.0","moz:headless":false,"moz:platformVersion":"6.6.9-amd64","moz:processID":60540,"moz:profile":"/tmp/rust_mozprofilevjF5GM","moz:shutdownTimeout":60000,"moz:useNonSpecCompliantPointerOrigin":false,"moz:webdriverClick":true,"moz:windowless":false,"pageLoadStrategy":"normal","platformName":"linux","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify"}}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '761', 'date': 'Thu, 26 Sep 2024 17:38:19 GMT'})
+20:38:20 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:20 - conftest - INFO - Navigate to base URL: http://testfire.net.
+20:38:20 - framework.browser.browser - DEBUG - Navigate to URL: http://testfire.net
+20:38:20 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/url {'url': 'http://testfire.net'}
+20:38:21 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/url HTTP/1.1" 200 14
+20:38:21 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:20 GMT'})
+20:38:21 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:21 - test_login - INFO - Start the login test.
+20:38:21 - framework.cache.cache_element - DEBUG - Initialized CacheElement.
+20:38:21 - framework.pages.base_page - DEBUG - Initialized BasePage: login page with unique locator: ('id', 'btnSubmit')
+20:38:21 - framework.cache.cache_element - DEBUG - Initialized CacheElement.
+20:38:21 - framework.pages.base_page - DEBUG - Initialized BasePage: main page with unique locator: ('xpath', "//a[font[text()='Sign Off']]")
+20:38:21 - test_login - INFO - Navigate to the login URL. URL: http://testfire.net/login.jsp.
+20:38:21 - framework.browser.browser - DEBUG - Navigate to URL: http://testfire.net/login.jsp
+20:38:21 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/url {'url': 'http://testfire.net/login.jsp'}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/url HTTP/1.1" 200 14
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - test_login - INFO - Enter username: admin.
+20:38:22 - testfire_tests.pages.login_page - DEBUG - Enter username: admin to username textbox
+20:38:22 - testfire_tests.pages.login_page - DEBUG - Get username textbox element.
+20:38:22 - framework.cache.cache_element - DEBUG - Element 'username_textbox_element' not found in cache.
+20:38:22 - framework.elements.base_element - DEBUG - Initialized BaseElement: username_textbox_element with locator: ('id', 'uid').
+20:38:22 - framework.cache.cache_element - DEBUG - Element 'username_textbox_element' find and put cache.
+20:38:22 - framework.elements.textbox_element - DEBUG - Enter text admin into text box: username_textbox_element with locator: ('id', 'uid').
+20:38:22 - framework.browser.browser - DEBUG - Find element. Locator: (id, uid).
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element {'using': 'css selector', 'value': '[id="uid"]'}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element HTTP/1.1" 200 88
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"1594e69c-83a6-4b74-86b1-ccbcfbb60d33"}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '88', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element/1594e69c-83a6-4b74-86b1-ccbcfbb60d33/value {'text': 'admin', 'value': ['a', 'd', 'm', 'i', 'n']}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element/1594e69c-83a6-4b74-86b1-ccbcfbb60d33/value HTTP/1.1" 200 14
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - test_login - INFO - Enter password.
+20:38:22 - testfire_tests.pages.login_page - DEBUG - Enter password to password textbox.
+20:38:22 - testfire_tests.pages.login_page - DEBUG - Get password textbox element.
+20:38:22 - framework.cache.cache_element - DEBUG - Element 'password_textbox_element' not found in cache.
+20:38:22 - framework.elements.base_element - DEBUG - Initialized BaseElement: password_textbox_element with locator: ('id', 'passw').
+20:38:22 - framework.cache.cache_element - DEBUG - Element 'password_textbox_element' find and put cache.
+20:38:22 - framework.elements.textbox_element - DEBUG - Enter text admin into text box: password_textbox_element with locator: ('id', 'passw').
+20:38:22 - framework.browser.browser - DEBUG - Find element. Locator: (id, passw).
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element {'using': 'css selector', 'value': '[id="passw"]'}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element HTTP/1.1" 200 88
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"a3e27104-32ba-4b13-b0b1-9bc6460d094c"}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '88', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element/a3e27104-32ba-4b13-b0b1-9bc6460d094c/value {'text': 'admin', 'value': ['a', 'd', 'm', 'i', 'n']}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element/a3e27104-32ba-4b13-b0b1-9bc6460d094c/value HTTP/1.1" 200 14
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - test_login - INFO - Click the login button.
+20:38:22 - testfire_tests.pages.login_page - DEBUG - Click the login button.
+20:38:22 - testfire_tests.pages.login_page - DEBUG - Get login button element.
+20:38:22 - framework.cache.cache_element - DEBUG - Element 'login_button_element' not found in cache.
+20:38:22 - framework.elements.base_element - DEBUG - Initialized BaseElement: login_button_element with locator: ('name', 'btnSubmit').
+20:38:22 - framework.cache.cache_element - DEBUG - Element 'login_button_element' find and put cache.
+20:38:22 - framework.elements.base_element - DEBUG - Click on element: login_button_element with locator: ('name', 'btnSubmit').
+20:38:22 - framework.browser.browser - DEBUG - Find element. Locator: (name, btnSubmit).
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element {'using': 'css selector', 'value': '[name="btnSubmit"]'}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element HTTP/1.1" 200 88
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"bb51cec7-ba85-49d6-bae4-efbd118a63a1"}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '88', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element/bb51cec7-ba85-49d6-bae4-efbd118a63a1/click {}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element/bb51cec7-ba85-49d6-bae4-efbd118a63a1/click HTTP/1.1" 200 14
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - test_login - INFO - Assert find sign-off button after login.
+20:38:22 - framework.elements.base_element - DEBUG - Initialized BaseElement: unique_element with locator: ('xpath', "//a[font[text()='Sign Off']]").
+20:38:22 - framework.browser.browser - DEBUG - Find element. Locator: (xpath, //a[font[text()='Sign Off']]).
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element {'using': 'xpath', 'value': "//a[font[text()='Sign Off']]"}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/element HTTP/1.1" 200 88
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"204d9b88-fea0-4c3e-863d-8aaed4a121b6"}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '88', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/execute/sync {'script': '/* isDisplayed */return (function() {\n    return function() {\n        var k = this;\n\n        functio...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '204d9b88-fea0-4c3e-863d-8aaed4a121b6'}]}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/execute/sync HTTP/1.1" 200 14
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - framework.elements.base_element - DEBUG - Element unique_element with locator: ('xpath', "//a[font[text()='Sign Off']]") displayed: True
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/execute/sync {'script': '/* isDisplayed */return (function() {\n    return function() {\n        var k = this;\n\n        functio...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': '204d9b88-fea0-4c3e-863d-8aaed4a121b6'}]}
+20:38:22 - urllib3.connectionpool - DEBUG - http://localhost:57641 "POST /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca/execute/sync HTTP/1.1" 200 14
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:22 - framework.pages.base_page - DEBUG - Unique element of main page is displayed: True.
+20:38:22 - test_login - INFO - Finish login test.
+20:38:22 - conftest - INFO - Close the browser.
+20:38:22 - framework.browser.browser - DEBUG - Closing the browser.
+20:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:57641/session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca {}
+20:38:23 - urllib3.connectionpool - DEBUG - http://localhost:57641 "DELETE /session/5d8ebd40-4ccf-4ba4-890d-93e97e272dca HTTP/1.1" 200 14
+20:38:23 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:38:21 GMT'})
+20:38:23 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:38:23 - root - INFO - Browser closed.
+
+search_xss
+20:40:26 - conftest - INFO - Initialize browser.
+20:40:26 - framework.browser.browser - DEBUG - Initialize browser with type: firefox and timeout: 10 seconds.
+20:40:26 - framework.browser.browser_factory - DEBUG - Initialize browser of type: firefox in BrowserFactory.
+20:40:26 - framework.browser.browser_factory - DEBUG - Initialize FireFox.
+20:40:26 - selenium.webdriver.common.driver_finder - DEBUG - Skipping Selenium Manager; path to firefox driver specified in Service class: /usr/local/bin/geckodriver
+20:40:26 - selenium.webdriver.common.service - DEBUG - Started executable: `/usr/local/bin/geckodriver` in a child process with pid: 61944 using 0 to output -3
+20:40:26 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:45703/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'firefox', 'acceptInsecureCerts': True, 'moz:debuggerAddress': True, 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'moz:firefoxOptions': {'prefs': {'remote.active-protocols': 3}}}}}
+20:40:26 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:45703
+20:40:27 - urllib3.connectionpool - DEBUG - http://localhost:45703 "POST /session HTTP/1.1" 200 761
+20:40:27 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"sessionId":"aab87366-4bc7-4ff2-8c45-380b32592d62","capabilities":{"acceptInsecureCerts":true,"browserName":"firefox","browserVersion":"115.7.0","moz:accessibilityChecks":false,"moz:buildID":"20240115170312","moz:debuggerAddress":"127.0.0.1:49049","moz:geckodriverVersion":"0.35.0","moz:headless":false,"moz:platformVersion":"6.6.9-amd64","moz:processID":61951,"moz:profile":"/tmp/rust_mozprofileIYTJyN","moz:shutdownTimeout":60000,"moz:useNonSpecCompliantPointerOrigin":false,"moz:webdriverClick":true,"moz:windowless":false,"pageLoadStrategy":"normal","platformName":"linux","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify"}}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '761', 'date': 'Thu, 26 Sep 2024 17:40:26 GMT'})
+20:40:27 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:27 - conftest - INFO - Navigate to base URL: http://testfire.net.
+20:40:27 - framework.browser.browser - DEBUG - Navigate to URL: http://testfire.net
+20:40:27 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62/url {'url': 'http://testfire.net'}
+20:40:29 - urllib3.connectionpool - DEBUG - http://localhost:45703 "POST /session/aab87366-4bc7-4ff2-8c45-380b32592d62/url HTTP/1.1" 200 14
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:40:27 GMT'})
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:29 - test_search_xss - INFO - Start the XSS test.
+20:40:29 - framework.cache.cache_element - DEBUG - Initialized CacheElement.
+20:40:29 - framework.pages.base_page - DEBUG - Initialized BasePage: landing page with unique locator: ('name', 'query')
+20:40:29 - test_search_xss - INFO - Navigate to landing page.
+20:40:29 - framework.browser.browser - DEBUG - Navigate to URL: http://testfire.net
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62/url {'url': 'http://testfire.net'}
+20:40:29 - urllib3.connectionpool - DEBUG - http://localhost:45703 "POST /session/aab87366-4bc7-4ff2-8c45-380b32592d62/url HTTP/1.1" 200 14
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:40:29 GMT'})
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:29 - test_search_xss - INFO - Enter xss in search field and submit.
+20:40:29 - testfire_tests.pages.landing_page - DEBUG - Enter search query: <script>alert('XSS')</script>
+20:40:29 - testfire_tests.pages.landing_page - DEBUG - Get search textbox element.
+20:40:29 - framework.cache.cache_element - DEBUG - Element 'search_textbox_element' not found in cache.
+20:40:29 - framework.elements.base_element - DEBUG - Initialized BaseElement: search_textbox_element with locator: ('name', 'query').
+20:40:29 - framework.cache.cache_element - DEBUG - Element 'search_textbox_element' find and put cache.
+20:40:29 - framework.elements.textbox_element - DEBUG - Enter text <script>alert('XSS')</script> into text box: search_textbox_element with locator: ('name', 'query').
+20:40:29 - framework.browser.browser - DEBUG - Find element. Locator: (name, query).
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62/element {'using': 'css selector', 'value': '[name="query"]'}
+20:40:29 - urllib3.connectionpool - DEBUG - http://localhost:45703 "POST /session/aab87366-4bc7-4ff2-8c45-380b32592d62/element HTTP/1.1" 200 88
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"2f039f32-cde2-4feb-ad71-fd6799de5bc2"}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '88', 'date': 'Thu, 26 Sep 2024 17:40:29 GMT'})
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62/element/2f039f32-cde2-4feb-ad71-fd6799de5bc2/value {'text': "<script>alert('XSS')</script>", 'value': ['<', 's', 'c', 'r', 'i', 'p', 't', '>', 'a', 'l', 'e', 'r', 't', '(', "'", 'X', 'S', 'S', "'", ')', '<', '/', 's', 'c', 'r', 'i', 'p', 't', '>']}
+20:40:29 - urllib3.connectionpool - DEBUG - http://localhost:45703 "POST /session/aab87366-4bc7-4ff2-8c45-380b32592d62/element/2f039f32-cde2-4feb-ad71-fd6799de5bc2/value HTTP/1.1" 200 14
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:40:29 GMT'})
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:29 - testfire_tests.pages.landing_page - DEBUG - Submit search query.
+20:40:29 - testfire_tests.pages.landing_page - DEBUG - Get search button element.
+20:40:29 - framework.cache.cache_element - DEBUG - Element 'search_button_element' not found in cache.
+20:40:29 - framework.elements.base_element - DEBUG - Initialized BaseElement: search_button_element with locator: ('xpath', "//input[@type='submit' and @value='Go']", 'search_button_element').
+20:40:29 - framework.cache.cache_element - DEBUG - Element 'search_button_element' find and put cache.
+20:40:29 - framework.elements.base_element - DEBUG - Click on element: search_button_element with locator: ('xpath', "//input[@type='submit' and @value='Go']", 'search_button_element').
+20:40:29 - framework.browser.browser - DEBUG - Find element. Locator: (xpath, //input[@type='submit' and @value='Go']).
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62/element {'using': 'xpath', 'value': "//input[@type='submit' and @value='Go']"}
+20:40:29 - urllib3.connectionpool - DEBUG - http://localhost:45703 "POST /session/aab87366-4bc7-4ff2-8c45-380b32592d62/element HTTP/1.1" 200 88
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"5a927000-aa59-4514-a867-dfdb7e40fc69"}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '88', 'date': 'Thu, 26 Sep 2024 17:40:29 GMT'})
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62/element/5a927000-aa59-4514-a867-dfdb7e40fc69/click {}
+20:40:29 - urllib3.connectionpool - DEBUG - http://localhost:45703 "POST /session/aab87366-4bc7-4ff2-8c45-380b32592d62/element/5a927000-aa59-4514-a867-dfdb7e40fc69/click HTTP/1.1" 200 14
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:40:29 GMT'})
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:29 - test_search_xss - INFO - Get page source to check for XSS payload.
+20:40:29 - framework.browser.browser - DEBUG - Get page source.
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62/source {}
+20:40:29 - urllib3.connectionpool - DEBUG - http://localhost:45703 "GET /session/aab87366-4bc7-4ff2-8c45-380b32592d62/source HTTP/1.1" 500 439
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=500 | data={"value":{"error":"unexpected alert open","message":"Dismissed user prompt dialog: XSS","stacktrace":"RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8\nWebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:187:5\nUnexpectedAlertOpenError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:704:5\nGeckoDriver.prototype._handleUserPrompts@chrome://remote/content/marionette/driver.sys.mjs:2841:13\n"}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '439', 'date': 'Thu, 26 Sep 2024 17:40:29 GMT'})
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:29 - test_search_xss - ERROR - XSS vulnerability detected: Alert appeared
+20:40:29 - conftest - INFO - Close the browser.
+20:40:29 - framework.browser.browser - DEBUG - Closing the browser.
+20:40:29 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:45703/session/aab87366-4bc7-4ff2-8c45-380b32592d62 {}
+20:40:30 - urllib3.connectionpool - DEBUG - http://localhost:45703 "DELETE /session/aab87366-4bc7-4ff2-8c45-380b32592d62 HTTP/1.1" 200 14
+20:40:30 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '14', 'date': 'Thu, 26 Sep 2024 17:40:29 GMT'})
+20:40:30 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+20:40:30 - root - INFO - Browser closed.
+
