@@ -13,9 +13,10 @@ class LoginPage(BasePage):
     """
     Login page class with basic elements
     """
-
     __PAGE_NAME = "login page"
-    __UNIQUE_ELEMENT_LOCATOR = (By.ID, "btnSubmit")
+
+    __UNIQUE_ELEMENT_NAME = "unique element"
+    __UNIQUE_ELEMENT_LOCATOR = (By.XPATH, "//a[font[text()='Sign On']]")
 
     __LOGIN_PAGE_USERNAME_TEXTBOX_NAME = "username_textbox_element"
     __LOGIN_PAGE_USERNAME_TEXTBOX_LOCATOR = (By.ID, "uid")
@@ -30,7 +31,8 @@ class LoginPage(BasePage):
         """
         Initializes the LandingPage with a name and a unique element locator.
         """
-        super().__init__(self.__PAGE_NAME, self.__UNIQUE_ELEMENT_LOCATOR)
+        self.unique_element = ButtonElement(self.__UNIQUE_ELEMENT_LOCATOR, self.__UNIQUE_ELEMENT_NAME)
+        super().__init__(self.__PAGE_NAME, self.unique_element)
 
     @property
     def username_textbox_element(self):
@@ -99,3 +101,9 @@ class LoginPage(BasePage):
         """
         logger.debug("Click the login button.")
         self.login_button_element.click(browser)
+
+    def page_specific_method(self):
+        """
+        Implement specific abstract method
+        """
+        pass

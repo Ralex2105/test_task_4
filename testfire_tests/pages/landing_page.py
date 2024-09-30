@@ -14,8 +14,9 @@ class LandingPage(BasePage):
     """
     Landing page class with basic elements
     """
-
     __PAGE_NAME = "search page"
+
+    __UNIQUE_ELEMENT_NAME = "unique element"
     __UNIQUE_ELEMENT_LOCATOR = (By.NAME, "query")
 
     __SEARCH_PAGE_SEARCH_TEXTBOX_NAME = "search_textbox_element"
@@ -28,7 +29,8 @@ class LandingPage(BasePage):
         """
         Initializes the LandingPage with a name and a unique element locator.
         """
-        super().__init__(self.__PAGE_NAME, self.__UNIQUE_ELEMENT_LOCATOR)
+        self.unique_element = TextBoxElement(self.__UNIQUE_ELEMENT_LOCATOR, self.__UNIQUE_ELEMENT_NAME)
+        super().__init__(self.__PAGE_NAME, self.unique_element)
 
     @property
     def search_textbox_element(self):
@@ -74,3 +76,9 @@ class LandingPage(BasePage):
         """
         logger.debug("Submit search query.")
         self.search_button_element.click(browser)
+
+    def page_specific_method(self):
+        """
+        Implement specific abstract method
+        """
+        pass

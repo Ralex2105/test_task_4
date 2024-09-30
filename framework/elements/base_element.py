@@ -10,6 +10,14 @@ logger = logging.getLogger(__name__)
 
 class BaseElement(ABC):
 
+    def __new__(cls, *args, **kwargs):
+        """
+        For example without abstractmethod: Method to ban initialize object this class
+        """
+        if cls is BaseElement:
+            raise TypeError("BasePage class cannot be instantiated directly.")
+        return super().__new__(cls)
+
     def __init__(self, locator, name):
         """
         Initializes the element with the specified locator.
